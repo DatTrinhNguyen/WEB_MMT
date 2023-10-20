@@ -1,0 +1,63 @@
+﻿@model WEB_MMT.Models.User
+
+@{
+    ViewData["Title"] = "Đăng Ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<link rel="stylesheet" href="~/css/Resignter.css">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+</head>
+<body>
+    <div class="container">
+        <form asp-action="uSignUp" method="post" class="form-box">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (ViewBag.msg != null)
+            {
+                <div class="alert alert-danger">
+                    <strong>Error ! </strong> @ViewBag.msg
+                </div>
+
+            }
+            <h1 id="title">Sign Up</h1>
+            <div class="input-group">
+                <div class="input-field" id="nameField">
+                    <label asp-for="Nameuser" class="label"> </label>
+                    <input asp-for="Nameuser" class="input-field" placeholder="Enter your name" />
+                    <span asp-validation-for="Nameuser" class="text-danger"></span>
+                </div>
+
+                <div class="input-field">
+                    <label asp-for="Email" class="label"></label>
+                    <input asp-for="Email" class="input-field" type="email" placeholder="Enter your email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="input-field">
+                    <label asp-for="Passwords" class="label"></label>
+                    <input asp-for="Passwords" class="input-field" type="password" placeholder="Enter your password" />
+                    <span asp-validation-for="Passwords" class="text-danger"></span>
+                </div>
+
+                <div class="btn-field">
+                    <button type="submit" id="signupBtn" class="button">Sign up</button>
+                    <button type="button" id="signinBtn" class="button" onclick="location.href = '@Url.Action("uSignIn", "Home")'">Sign In</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+\
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,0 +1,103 @@
+﻿@model WEB_MMT.Models.TblQuestion
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StartQuiz</title>
+    <link href="~\css\bootmin.css" rel="stylesheet" />
+    <link href="~\css\boots.css" rel="stylesheet" />
+
+</head>
+<body>
+
+
+
+    <hr />
+    <h1 style="text-align:center;color:green">Welcome to My QuizApplication</h1>
+
+    <hr />
+
+    <hr />
+    <h1 style="text-align:center;color:green">Best of Luck:)</h1>
+
+    <hr />
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-lg-10 col-md-10 col-xs-10 col-sm-10">
+
+
+                    <div class="row">
+                        <h1>@Html.DisplayFor(x=>x.Questiontext)</h1>
+
+
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+
+                    <div class="row">
+
+
+                        <h5>@Html.RadioButtonFor(x=>x.QuestionA, Model.Questionid)@Model.QuestionA</h5>
+
+                    </div>
+
+                    <div class="row">
+
+
+                        <h5>@Html.RadioButtonFor(x => x.QuestionB, Model.Questionid)@Model.QuestionB</h5>
+
+                    </div>
+                    <div class="row">
+
+
+                        <h5>@Html.RadioButtonFor(x => x.QuestionC, Model.Questionid)@Model.QuestionC</h5>
+
+                    </div>
+                    <div class="row">
+
+
+                        <h5>@Html.RadioButtonFor(x => x.QuestionD, Model.Questionid)@Model.QuestionD</h5>
+
+                    </div>
+
+                    <div class="row" style="display:none">
+
+                        @Html.TextBoxFor(x=>x.QuestionCorrect)
+
+                    </div>
+
+
+                    <div class="row">
+                        <input type="submit" value="submit" class="btn btn-success" />
+
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+    }
+
+</body>
+</html>

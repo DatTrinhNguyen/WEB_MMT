@@ -1,0 +1,25 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EndExam</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container text-center mt-5">
+        <h1 class="display-4">End Of The Set</h1>
+        <p class="lead">Your Score is</p>
+        <h2 class="display-2">@TempData["score"]</h2>
+
+        <div class="mt-4">
+            <a href="@Url.Action("ExamDashboard")" class="btn btn-primary">Back to Home</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ExamDashboard</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            /* Thêm CSS tùy chỉnh (nếu cần) */
+        }
+    </style>
+</head>
+<body>
+    @if (ViewBag.error != null)
+    {
+        <div class="alert alert-danger">
+            <strong>Error !</strong> @ViewBag.error
+        </div>
+    }
+
+    @using (Html.BeginForm())
+    {
+        <div class="container">
+            <br />
+            <br />
+            <h1 style="text-align:center">Nhập Số May Mắn</h1>
+
+            <input type="text" name="room" placeholder="Lucky Number" class="form-control" />
+            <br />
+            <br />
+            <input type="submit" value="Submit" class="btn btn-dark btn-block" />
+        </div>
+    }
+</body>
+</html>

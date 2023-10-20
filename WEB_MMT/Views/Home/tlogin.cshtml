@@ -1,0 +1,51 @@
+﻿@model WEB_MMT.Models.TblAdmin;
+
+@{
+    ViewData["Title"] = "Admin Login";
+   // Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="~/css/Resignter.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+</head>
+<body>
+    <div class="container">
+        <form asp-action="tlogin" method="post" class="form-box">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <h1 id="title">Sign In</h1>
+            @if (ViewBag.msg != null)
+            {
+                <div class="alert alert-danger">
+                    <strong>Error ! </strong> @ViewBag.msg
+                </div>
+
+            }
+            <div class="input-group">
+                <div class="input-field">
+                    <label asp-for="Adname" class="label"></label>
+                    <input asp-for="Adname" class="input-field" type="text" placeholder="Enter your Account" />
+                    <span asp-validation-for="Adname" class="text-danger"></span>
+                </div>
+
+                <div class="input-field">
+                    <label asp-for="Adpass" class="label"></label>
+                    <input asp-for="Adpass" class="input-field" type="password" placeholder="Enter your password" />
+                    <span asp-validation-for="Adpass" class="text-danger"></span>
+                </div>
+                <div class="btn-field">
+                    <button type="submit" id="SigninBtn" class="button">Sign in</button>
+        </form>
+    </div>
+</body>
+
+<p style="color:red">@ViewBag.msg </p>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

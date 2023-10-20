@@ -1,0 +1,119 @@
+﻿@model WEB_MMT.Models.TblQuestion
+
+@{
+    ViewData["Title"] = "Add_Questions";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>Add_Questions</h1>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h1 style="color:green">@TempData["ms"]</h1>
+
+    <div class="form-horizontal">
+        <div class="form-group">
+            @Html.LabelFor(model => model.cat_id, "Bộ Câu Hỏi", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("cat_id", ViewBag.list, "--Select--", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.cat_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Questiontext, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Questiontext, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Questiontext, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QuestionA, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.QuestionA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.QuestionA, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QuestionB, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.QuestionB, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.QuestionB, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QuestionC, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.QuestionC, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.QuestionC, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QuestionD, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.QuestionD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.QuestionD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.QuestionCorrect, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.QuestionCorrect, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.QuestionCorrect, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+@* <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Đảm bảo bạn đã thêm thư viện jQuery -->
+
+<script>
+    $(document).ready(function () {
+        $('#cat_id').on('change', function () {
+            var selectedValue = $(this).val();
+            // Tạo một đối tượng chứa dữ liệu bạn muốn gửi đến server
+            var data = {
+                catId: selectedValue
+            };
+
+            $.ajax({
+                url: '/Home/Add_Questions', // Thay thế bằng đường dẫn tới Action trong controller của bạn
+                type: 'POST', // Loại yêu cầu (POST hoặc GET tùy theo cách bạn đã thiết lập trong controller)
+                data: JSON.stringify(data), // Chuyển đổi đối tượng dữ liệu thành chuỗi JSON
+                contentType: 'application/json; charset=utf-8', // Định dạng dữ liệu
+                dataType: 'json', // Kiểu dữ liệu bạn muốn nhận từ server
+
+                success: function (response) {
+                    // Xử lý phản hồi từ server ở đây, ví dụ:
+                    if (response.success) {
+                        // Thực hiện hành động thành công
+                        alert('Yêu cầu đã được xử lý thành công!');
+                    } else {
+                        // Xử lý khi có lỗi
+                        alert('Có lỗi xảy ra: ' + response.errorMessage);
+                    }
+                },
+                error: function (error) {
+                    // Xử lý khi gửi yêu cầu thất bại
+                    alert('Lỗi khi gửi yêu cầu: ' + error.statusText);
+                }
+            });
+        });
+    });
+
+</script> *@
+

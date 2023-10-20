@@ -1,0 +1,54 @@
+﻿@model WEB_MMT.Models.User
+
+@{
+    ViewData["Title"] = "Đăng Nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="~/css/Resignter.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+</head>
+<body>
+    <div class="container">
+        <form asp-action="uSignIn" method="post" class="form-box">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <h1 id="title">Sign In</h1>
+            @if (ViewBag.msg != null)
+            {
+                <div class="alert alert-danger">
+                    <strong>Error ! </strong> @ViewBag.msg
+                </div>
+
+            }
+            <div class="input-group">
+                <div class="input-field">
+                    <label asp-for="Email" class="label"></label>
+                    <input asp-for="Email" class="input-field" type="email" placeholder="Enter your email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="input-field">
+                    <label asp-for="Passwords" class="label"></label>
+                    <input asp-for="Passwords" class="input-field" type="password" placeholder="Enter your password" />
+                    <span asp-validation-for="Passwords" class="text-danger"></span>
+                </div>
+                <div class="btn-field">
+                    <button type="submit" id="SigninBtn" class="button">Sign in</button>
+                    <button type="button" id="signupBtn" class="button" onclick="location.href = '@Url.Action("uSignUp", "Home")'">Sign up</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

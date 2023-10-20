@@ -1,0 +1,69 @@
+﻿@model IEnumerable<WEB_MMT.Models.TblQuestion>
+
+@{
+    ViewData["Title"] = "ViewAllQuestions";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h1>ViewAllQuestions</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Questiontext)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuestionCorrect)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cat_id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Questiontext)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestionA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestionB)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestionC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestionD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuestionCorrect)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cat_id)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Questionid">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.Questionid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
